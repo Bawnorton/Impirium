@@ -1,0 +1,29 @@
+{
+	"schemaVersion": 1,
+	"id": "impirium",
+	"version": "${version}",
+	"name": "ImPIrium",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Bawnorton"
+	],
+	"contact": {
+		"homepage": "https://github.com/Bawnorton/ImPIrium/",
+		"sources": "https://github.com/Bawnorton/ImPIrium/"
+	},
+	"license": "MIT",
+	"icon": "assets/impirium/icon.png",
+	"environment": "*",
+	"languageAdapters": {
+		"impirium": "com.bawnorton.impirium.ImPIriumAgent"
+	},
+	"entrypoints": {
+		"main": [
+			"com.bawnorton.impirium.ImPIrium"
+		]
+	},
+	"depends": {
+		"java": ">=17",
+		"fabric-api": "*"
+	}
+}
