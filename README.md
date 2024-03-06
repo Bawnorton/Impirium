@@ -6,6 +6,9 @@ Usage:
 /getpi # gets the value of pi
 ```
 
+Why the name Imπrium?<br>
+Imperium is Latin for control, this mod allows you to control π, so Imπrium
+
 Is this mod compatible with X?<br>
 Probably, this should only affect mods that directly target literal π constants.
 
