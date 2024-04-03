@@ -48,7 +48,7 @@ public class ImPIrium implements ModInitializer {
 	}
 
 	@SuppressWarnings("DuplicatedCode")
-	private static void updateValues() {
+	public static void updateValues() {
 		HALF_NEW_PI = NEW_PI / 2;
 		QUARTER_NEW_PI = NEW_PI / 4;
 		NEW_TAU = NEW_PI * 2;

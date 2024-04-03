@@ -20,6 +20,9 @@
 	"entrypoints": {
 		"main": [
 			"com.bawnorton.impirium.ImPIrium"
+		],
+		"client": [
+			"com.bawnorton.impirium.ImPIriumClient"
 		]
 	},
 	"depends": {
