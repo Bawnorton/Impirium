@@ -20,26 +20,25 @@ public class ImPIriumClient implements ClientModInitializer {
 
 		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
 			MinecraftClient client = MinecraftClient.getInstance();
-			boolean singleplayer = client.isInSingleplayer();
-			String suffix = singleplayer ? "" : "client";
+			if(client.isInSingleplayer()) return;
 
-			if(!singleplayer && ImPIrium.NEW_PI != 3.141592653589793) {
+			if(ImPIrium.NEW_PI != 3.141592653589793) {
 				client.inGameHud.getChatHud().addMessage(Text.literal("Warning: your PI is modified on a public server, you may get banned by an anticheat.")
 						.formatted(Formatting.RED, Formatting.BOLD));
 			}
 
-			dispatcher.register(ClientCommandManager.literal("getpi" + suffix)
+			dispatcher.register(ClientCommandManager.literal("getpiclient")
 					.executes(context -> {
 						context.getSource().sendFeedback(Text.of("Pi is " + ImPIrium.NEW_PI));
 						return 1;
 					})
 			);
-			dispatcher.register(ClientCommandManager.literal("setpi" + suffix)
+			dispatcher.register(ClientCommandManager.literal("setpiclient")
 					.then(ClientCommandManager.argument("value", DoubleArgumentType.doubleArg())
 							.executes(context -> {
 								double pi = DoubleArgumentType.getDouble(context, "value");
 
-								if(!showedWarning && !singleplayer && pi != 3.141592653589793) {
+								if(!showedWarning && pi != 3.141592653589793) {
 									showedWarning = true;
 									context.getSource()
 											.sendFeedback(Text.literal("Warning: you may get banned by an anticheat." +
