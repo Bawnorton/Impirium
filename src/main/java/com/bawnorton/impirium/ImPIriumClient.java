@@ -29,7 +29,7 @@ public class ImPIriumClient implements ClientModInitializer {
 
 			dispatcher.register(ClientCommandManager.literal("getpiclient")
 					.executes(context -> {
-						context.getSource().sendFeedback(Text.of("Pi is " + ImPIrium.NEW_PI));
+						context.getSource().sendFeedback(Text.of("Client pi is " + ImPIrium.NEW_PI));
 						return 1;
 					})
 			);
@@ -49,7 +49,7 @@ public class ImPIriumClient implements ClientModInitializer {
 
 								ImPIrium.NEW_PI = pi;
 								ImPIrium.updateValues();
-								context.getSource().sendFeedback(Text.of("Pi set to " + ImPIrium.NEW_PI));
+								context.getSource().sendFeedback(Text.of("Client pi set to " + ImPIrium.NEW_PI));
 								return 1;
 							})
 					)

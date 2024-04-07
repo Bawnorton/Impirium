@@ -4,6 +4,7 @@ import com.mojang.brigadier.arguments.DoubleArgumentType;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.server.command.CommandManager;
+import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.Text;
 
 public class ImPIrium implements ModInitializer {
@@ -35,6 +36,7 @@ public class ImPIrium implements ModInitializer {
 					})
 			);
 			dispatcher.register(CommandManager.literal("setpi")
+					.requires(this::canRun)
 					.then(CommandManager.argument("value", DoubleArgumentType.doubleArg())
 							.executes(context -> {
 								NEW_PI = DoubleArgumentType.getDouble(context, "value");
@@ -45,6 +47,18 @@ public class ImPIrium implements ModInitializer {
 					)
 			);
 		});
+	}
+
+	private boolean canRun(ServerCommandSource source) {
+		if(!source.isExecutedByPlayer()) {
+			return true;
+		}
+
+		if(source.getServer().isHost(source.getPlayer().getGameProfile())) {
+			return true;
+		} else {
+			return source.hasPermissionLevel(1);
+		}
 	}
 
 	@SuppressWarnings("DuplicatedCode")

@@ -58,7 +58,7 @@ public class ImPIriumAgent implements LanguageAdapter {
                 node.accept(piReplacerClassVisitor);
 
                 if(piReplacerClassVisitor.transformed) {
-                    LOGGER.info("[Imπrium] Transformed class " + className);
+                    LOGGER.debug("[Imπrium] Transformed class " + className);
                     try {
                         Path path = FabricLoader.getInstance().getGameDir().resolve(".transformed-classes").resolve(className + ".class");
                         Files.createDirectories(path.getParent());
